@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from classic.systemspace.network/?sct8 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Apr 2025 03:50:32 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<title>⁲⁲⁲⁲⁲</title>
+	<link rel="apple-touch-icon" sizes="180x180" href="res/img/icons/apple-touch-icon.png">
+	<link rel="icon" type="image/png" href="res/img/icons/favicon-32x32.png" sizes="32x32">
+	<link rel="icon" type="image/png" href="res/img/icons/favicon-16x16.png" sizes="16x16">
+	<link rel="manifest" href="res/manifest.json">
+	<link rel="mask-icon" href="res/img/icons/safari-pinned-tab.svg" color="#000000">
+	<link rel="shortcut icon" href="res/img/icons/favicon.ico">
+	<meta name="msapplication-config" content="res/browserconfig-2.html">
+	<meta name="theme-color" content="#000000">
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="sct8/index.css">	
+	<script src="res/js/jquery.js"></script>
+	<script src="res/js/howler.js"></script>
+	<script>		
+		document.addEventListener("DOMContentLoaded", function(event) { 
+			var noise = new Howl({
+				src: "/res/audio/ambience/5.ogg",
+				loop: true,
+				volume: 0.8			
+			});
+
+			var bgm = new Howl({
+				src: "/res/audio/bgm/something.ogg",
+				volume: 1,
+				loop: true
+			});
+
+			var intro = new Howl({
+				src: "/sct8/welcome.ogg",
+				volume: 0.8,
+				loop: false
+			});
+
+			if (getCookie("seenintroo") !== "yes3") {
+				intro.play();
+				intro.once('load', function(){
+					PlayText();
+					$("#intro").addClass("ready");
+					setTimeout(function(){ window.scrollTo(0, 0); }, 1700);
+				    setTimeout(function(){ noise.play(); }, 1700);
+					setTimeout(function(){ $("#intro").addClass("destroyed"); }, 1700);
+				    setTimeout(function(){ bgm.play(); }, 2230);
+				    setTimeout(function(){ setCookie("seenintroo", "yes3", 356); }, 1700);
+				});
+
+				$("#intro h6").click(function(){
+					$("#intro").hide();
+					setCookie("seenintroo", "yes3", 356);
+				});
+				} else {
+						$("#intro").hide();
+						noise.play();
+						bgm.play();
+					}
+			$("#replay").click(function(){
+				setCookie("seenintroo", "no", 356);
+				location.reload();
+			});
+			
+			GetRegistrants();
+			UpdateClock();
+
+			setInterval(function(){
+				GetRegistrants();
+			}, 60000);
+
+			setInterval(function(){
+				UpdateClock();
+			}, 1000);
+		});
+
+		var new_time = 0;
+     	var rec = false;
+
+		function GetRegistrants() {
+			var now = new Date().getTime();
+			var slot_cost = 1728;
+			
+			var registrants = 4969;
+			var original_time = Math.floor(new Date("Jul 01 2023 17:00").getTime() / 1000);
+			var slots_left = 31000 - registrants;
+			new_time = original_time + slot_cost * slots_left;
+         	rec = true;
+			
+			var ex_time_used = now - (original_time * 1000);
+			var ex_slots_used = Math.ceil(ex_time_used / 1000 / slot_cost);
+			var slotsss_left = 31000 - registrants - ex_slots_used;
+
+			$("#slotsremaining").text(slotsss_left);
+		}
+
+		function UpdateClock() {
+			var now = new Date().getTime();
+			var countDownDate = new Date(new_time * 1000).getTime();
+
+			// Find the distance between now an the count down date
+			var distance = countDownDate - now;
+
+			// Time calculations for days, hours, minutes and seconds
+			var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+			var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+			var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+			var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+			if (minutes < 10) {
+				minutes = "0" + minutes;
+			}
+
+			if (seconds < 10) {
+				seconds = "0" + seconds;
+			}
+
+			// Display the result in the element with id="demo"
+			if (distance >= 0 && rec) {
+				$("#countdown").text(days + "d " + hours + ":" + minutes + ":" + seconds);
+			} else {
+          		$("#countdown").text("Waiting...");
+            }
+        
+		}
+
+		function PlayText() {
+			setTimeout(function(){ $("#intro h1").html("GAT_") }, 100);
+			setTimeout(function(){ $("#intro h1").html("GATES\\") }, 180);
+			setTimeout(function(){ $("#intro h1").html("GATES OP|") }, 270);
+			setTimeout(function(){ $("#intro h1").html("GATES%20OPEN/index-2.html") }, 350);
+			setTimeout(function(){ $("#intro h1").html("GA  TES OPEN-") }, 450);
+			setTimeout(function(){ $("#intro h1").html("GATES OPE   N\\") }, 510);
+			setTimeout(function(){ $("#intro h1").html("GAT  ES OPEN|") }, 620);
+			setTimeout(function(){ $("#intro h1").html("GATES%20OPEN/index-2.html") }, 690);
+			setTimeout(function(){ $("#intro h1").html("ERROR-") }, 740);
+			setTimeout(function(){ $("#intro h1").html("GATES O\\") }, 800);
+			setTimeout(function(){ $("#intro h1").html("GAT|") }, 880);
+			setTimeout(function(){ $("#intro h1").html("index-3.html") }, 940);
+			setTimeout(function(){ $("#intro h1").html("-") }, 1040);
+			setTimeout(function(){ $("#intro h1").html("\\") }, 1120);
+			setTimeout(function(){ $("#intro h1").html("▝▊") }, 1240);
+			setTimeout(function(){ $("#intro h1").html("%e2%96%9d%e2%96%8a%e2%96%9e%e2%96%83%e2%96%84%e2%96%87%20%e2%96%95%e2%96%85/index.html") }, 1290);
+			setTimeout(function(){ $("#intro h1").html("▝▊▞▃▄▇ ▕▅▒ ▕▄-") }, 1340);
+			setTimeout(function(){ $("#intro h1").html("▝▊▞▃▄▇ ▕▅▒ ▕▄▇▝▇▚<br>▚") }, 1440);
+			setTimeout(function(){ $("#intro h1").html("▝▊▞▃▄▇ ▕▅▒ ▕▄▇▝▇▚<br>▚▞▃▀░▅ |") }, 1480);
+			setTimeout(function(){ $("#intro h1").html("▝▊▞▃▄▇ ▕▅▒ ▕▄▇▝▇▚<br>▚▞▃▀░▅ ▒▗▒ ▁▊/") }, 1520);
+			setTimeout(function(){ $("#intro h1").html("▝▊▞▃▄▇ ▕▅▒ ▕▄▇▝▇▚<br>▚▞▃▀░▅ ▒▗▒ ▁▊▀▐░") }, 1580);
+		}
+
+		function setCookie(cname, cvalue, exdays) {
+		    var d = new Date();
+		    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+		    var expires = "expires="+d.toUTCString();
+		    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+		}
+
+		function getCookie(cname) {
+		    var name = cname + "=";
+		    var ca = document.cookie.split(';');
+		    for(var i = 0; i < ca.length; i++) {
+		        var c = ca[i];
+		        while (c.charAt(0) == ' ') {
+		            c = c.substring(1);
+		        }
+		        if (c.indexOf(name) == 0) {
+		            return c.substring(name.length, c.length);
+		        }
+		    }
+		    return "";
+		}
+
+		var konami = "38,38,40,40,37,39,37,39,66,65";
+		var kkeys = [];
+
+		$(document).keydown(function(e) {
+			kkeys.push(e.keyCode);
+
+			if (kkeys.toString().indexOf(konami) >= 0) {
+				$(document).unbind('keydown', arguments.callee);
+
+				window.location.href = "index.html";
+			}
+		});
+	</script>
+	<style>
+		@font-face {
+			font-family: CNT;
+			src: url('res/font/countdown.ttf');
+		}
+
+		#countdown {
+			font-family: CNT;
+			font-size: 3em;
+			margin: 0;
+			text-shadow: 0px 0px 16px #FF0;
+		}
+
+		#count h3 {
+			font-size: 16px;
+			margin: 0;
+			color: #888;
+		}
+
+		#slots h4 {
+			font-size: 24px;
+			margin: 0;
+			margin-top: 0.5em;
+		}
+
+		#slots h3 {
+			font-size: 16px;
+			margin: 0;
+			color: #888;
+			margin-bottom: 1em;
+		}
+
+		#belief h4 {
+			font-size: 24px;
+			margin: 0;
+			margin-top: 0.5em;
+		}
+
+		#belief h3 {
+			font-size: 16px;
+			margin: 0;
+			color: #888;
+			margin-bottom: 1em;
+		}
+
+		#flyer {
+			width: 100%;
+			height: 0px;
+			background-color: #000;
+			background-attachment: fixed;
+			background-image: url('sct8/home.png');
+			background-position: center;
+			transition: height 5s, opacity 5s;
+		}
+
+
+		#wallpaper {
+			width: 100%;
+			height: 70vh;
+			background-color: #000;
+			background-attachment: fixed;
+			background-image: url('sct8/home.png');
+			background-position: center;
+		}
+
+		#wallpaper #lain {
+			position: absolute;
+			top: calc(70vh - 456px);
+			left: 10vw;
+			transition: top 0s;
+		}
+
+		#wallpaper h1 {
+			position: absolute;
+			left: calc(10vw + 450px);
+			top: calc(70vh - 380px);
+			font-family: Heading;
+			font-size: 3vw;
+			text-shadow: 3px 6px #000, 0px -1px #000, 0px 1px #000, -1px 0px #000, 1px 0px #000, -1px -1px #000, 1px 1px #000, -1px 1px #000, 1px -1px #000;
+			transition: top 0s;
+		}
+
+		#register-button {
+			color: #FFFF00;
+		}
+
+		#register-button:hover {
+			color: #FF0000;
+			text-shadow: 0px 0px 10px #FF0000;
+		}
+
+
+		#intro {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 1000000;
+			background-color: #000;
+		}
+
+		#intro.ready {
+			animation: 1.7s introHeat cubic-bezier(.82,.28,.93,.3) forwards;
+		}
+
+		#intro h1 {
+			position: fixed;
+			left: calc(10vw + 450px);
+			top: calc(70vh - 380px);
+			font-family: Heading;
+			font-size: 3vw;
+			text-shadow: 3px 6px #000, 0px -1px #000, 0px 1px #000, -1px 0px #000, 1px 0px #000, -1px -1px #000, 1px 1px #000, -1px 1px #000, 1px -1px #000;
+		}
+
+		#intro.ready h1 {
+			animation: 1.7s typeHeat cubic-bezier(.82,.28,.93,.3) forwards;
+		}
+
+		#intro h6 {
+			position: relative;
+			top: 90vh;
+			cursor: pointer;
+			margin: 0;
+			color: #FFF;
+			opacity: 0.2;
+		}
+
+		#intro.destroyed {
+			transition: 2s;
+			opacity: 0;
+			pointer-events: none;
+		}
+
+		@keyframes introHeat {
+			0% {
+				background-color: #000;
+			}
+			100% {
+				background-color: #888;
+			}
+		}
+
+		@keyframes typeHeat {
+			0% {
+				text-shadow: 0px 0px 0px #FFF;
+				color: #FFF;
+			}
+			100% {
+				text-shadow: 0px 0px 100px #FFF, 0px 0px 20px #FFF, 0px 0px 10px #FFF;
+				color: #AAA;
+			}
+		}
+
+		#back {
+			background-color: rgba(0,0,0,1);
+			border: 1px solid #FFF;
+			box-shadow: 0px 6px #7859CC, 0px 0px 16px #7859CC;
+			width: 10em;
+			font-family: Heading;
+			font-size: 2em;
+			cursor: pointer;
+			position: absolute;
+			left: calc(19vw + 450px);
+			top: calc(90vh - 380px);
+			transition: 0.5s;
+			text-align: left;
+		}
+
+		#back:hover {
+			box-shadow: 0px 2px #7859CC, 0px 0px 64px #7859CC;
+			top: calc(90vh - 375px);
+
+		}
+	</style>
+</head>
+<body>
+	<div id="overlay"></div>
+	<div id="overlay2"></div>
+	<div id="contentloader">
+		<img id="loadtsuki" src="res/img/loader/loadtsuki.png"/>
+		<img id="loadspin" src="res/img/loader/loadspin.png"/>
+	</div>
+	<style>
+		#contentloader {
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #000;
+			z-index: 10000;
+			transition: 0.2s;
+		}
+
+		#loadtsuki {
+			position: absolute;
+			left: calc(50% - 48px);
+			top: calc(50% - 48px);
+		}
+
+		#loadspin {
+			position: absolute;
+			left: calc(50% - 46px);
+			top: calc(50% - 47px);
+			animation: LoaderSpin 2s infinite linear;
+		}
+
+		@keyframes LoaderSpin {
+			0% {
+				transform: rotate(0deg);
+			}
+			100% {
+				transform: rotate(360deg);
+			}
+		}
+
+		.destroyedloader {
+			opacity: 0;
+			pointer-events: none;
+			transition: 0.5s !important;
+			
+		}
+
+		.destroyedloader #loadtsuki {
+			top: calc(50% - 100px);
+			transition: 0.5s ease-in !important;
+		}
+
+		.destroyedloader #loadspin {
+			top: calc(50% - 100px);
+			transition: 0.5s ease-in !important;
+		}
+	</style>
+	<script>
+		document.addEventListener("DOMContentLoaded", function(event) { 
+			document.getElementById("contentloader").className = "destroyedloader";
+			document.getElementById("loadspin").src = "res/img/loader/loadfinish.png";
+		});
+
+		window.onbeforeunload = function() {
+			document.getElementById("contentloader").classList.remove("destroyedloader");
+			document.getElementById("loadspin").src = "res/img/loader/loadspin.png";
+		}
+	</script>
+	<div id="header">
+		<div id="headerbar">
+			<a class="statuslink"><img id="headerstatus" src="sct8/status-fail2.png"></a>
+			<img id="headerfade_left" src="res/img/headerbar/fade-left.png"/>
+			<marquee truespeed scrolldelay="30" scrollamount="3" id="headernews">
+				<img class="newssep" src="res/img/headerbar/sep.png"/>
+					<p>⑱Ⓑ⒌ⓑ⑭⑱Ⓗ⒅⒧ⓨⓙⓁ⒚⑩⒀Ⓦ⒗⒚⒴Ⓢ⒪⒢⒅⒃⑩⑼ⓞⓃ⒋⒒Ⓞ⒀⓻⒟⑵⑼⒎⒳⓰</p>
+				<img class="newssep" src="res/img/headerbar/sep.png"/>
+					<p style="color: red">⡻⢉⢧⠓⣿⢺⠺⣶⢙⠒⣄⢠⢶ ⡛⣓⣟⢜⢫⢺</p>
+				<img class="newssep" src="res/img/headerbar/sep.png"/>
+					<p style="color: lime">϶ͽͷΈλ ΨδϲΝ</p>
+				<img class="newssep" src="res/img/headerbar/sep.png"/>
+					<p>Ӂ҉ԙк ШиӾҋӼ уЁкђӚѰѹҏРѫГ</p>
+				<img class="newssep" src="res/img/headerbar/sep.png"/>
+					<p>ઍઍડએ ૬ઽ ૝ૢૡ૦્ઑ</p>
+				<img class="newssep" src="res/img/headerbar/sep.png"/>
+			</marquee>
+		</div>
+		<a href="indexe16e.html?sct8"><img id="knob" src="sct8/tsuki_knob2.png"/></a>
+	</div>
+	<style>
+		#header {
+			position: relative;
+			z-index: 1;
+		}
+
+		#headerbar {
+			position: fixed;
+			width: 100%;
+			left: 0;
+			top: 0;
+			height: 20px;
+
+			background-color: #000;
+			box-shadow: 0px 1px #FFF, 0px 2px #000;
+		}
+
+		#headerstatus {
+			position: fixed;
+			left: 0;
+			top: 0;
+			z-index: 1;
+		}
+
+		#headerfade_left {
+			position: fixed;
+			left: 150px;
+			top: 0px;
+			z-index: 1;
+		}
+
+		#headernews {
+			width: 100%;
+			font-family: Heading;
+			font-size: 16px;
+			letter-spacing: -4px;
+		}
+
+		#headernews p {
+			display: inline;
+			position: relative;
+			top: -8px;
+		}
+
+		#knob {
+			position: fixed;
+			left: 0;
+			top: 20px;
+		}
+
+		#knob2 {
+			position: fixed;
+			right: 0;
+			top: 20px;
+		}
+
+		#knob3 {
+			position: fixed;
+			right: 100px;
+			top: 20px;
+		}
+
+		#knob4 {
+			position: fixed;
+			left: 200px;
+			top: 20px;
+		}
+
+		#knob5 {
+			position: fixed;
+			left: 350px;
+			top: 20px;
+		}
+
+		#knob6 {
+			position: fixed;
+			left: 460px;
+			top: 20px;
+		}
+
+		#knob7 {
+			position: fixed;
+			left: 492px;
+			top: 20px;
+		}
+
+		#knob8 {
+			position: fixed;
+			right: 100px;
+			top: 20px;
+		}
+
+		.newssep {
+			vertical-align: top;
+		}
+	</style>
+	<div id="intro">
+		<h1></h1>
+		<center><h6>skip</h6></center>
+	</div>
+	<div id="flyer"></div>
+	<div id="wallpaper">
+		<img id="lain" src="sct8/lain.png"/>
+		<h1>▝▊▞▃▄▇ ▕▅▒ ▕▄▇▝▇▚<br><span style="color: red">▚▞▃▀░▅ ▒▗▒ ▁▊▀▐░</span></h1>
+	</div>
+	<div class="seperator"></div>
+	<div class="padded">
+		<h1>⁲ₓ⁸₅ₖ₂₃ ⁿ₃ ₔₔⁱ ₋₁₁₍₅ ⁹₂⁹ⁿⁿ⁾₍</h1>
+		<p>ᚂᚖᚆᚔ ᚔᚎᚍᚔᚗᚓᚆ ᚏᚉᚑ ᚆᚖᚍ  ᚗᚐᚌᚅ ᚋᚔ ᚘᚖᚑᚂᚌᚙᚆ᚛ᚏᚖ ᚈᚄᚉ ᚏᚌᚒᚗ ᚛ᚅᚂᚄᚊᚊᚒ<span style="color: yellow"> ᚜ᚏ ᚕᚑᚘ ᚎᚙᚘᚙᚍ ᚎᚆᚌᚒ᚜ᚑᚌᚎ ᚕᚃᚕ ᚍᚖ ᚛ᚃ ᚔᚊ ᚏᚆᚕᚒᚙᚊᚁᚄᚏᚚᚘ ᚏᚐ᚛ᚈᚂᚃᚈ ᚌᚘᚏ ᚒ᚜᚛ᚏᚑᚎᚄᚃᚒᚋᚋᚑ</span> ᚙ ᚑᚍᚘᚇᚉᚅ ᚋᚁᚅᚇᚔᚅ᚛ ᚜ᚒ ᚌᚍᚌ ᚏᚇᚆᚐᚉ ᚔᚍᚒᚖᚊᚇ᚜ ᚘᚃᚎ ᚍᚘ ᚊᚗᚚᚔ ᚒᚏᚏ᚜ᚄᚅ</p>
+	</div>
+	<div class="seperate"></div>
+	<div class="padded">
+		<center>
+			<div id="stats">
+				<h2 id="countdown" style="color: yellow">...</h2>
+				<h3>ᚙᚘᚙ</h3>
+			</div>
+		</center>
+	</div>
+	<div class="seperate"></div>
+	<div class="padded">
+		<h1>ᚇ᚛᚛ᚗ ᚆ᚜ᚒᚊᚕᚉ ᚚᚍ ᚊᚙ᚛ᚅᚃ ᚓᚈ ᚂᚁ ᚆᚍᚐᚐᚑᚘ</h1>
+		<p>ⅹⅵↇⅢ⅜ⅡⅮⅯⅠ↉⅝⅝ ⅻⅿↅ ⅽⅡⅹ⅐ⅠↅⅤⅧↀ ⅞ⅷ ⅝⅞Ⅳⅱⅷ ⅒ↅⅤ <span style="color: red">⅛⅑ⅻↆⅨⅧⅡ</span> ⅻ⅗ↆⅲ⅙ⅷⅦⅳⅱⅧ ⅽⅿⅭ⅞ ⅯⅪⅤⅪↁ⅙Ↄ ⅙ⅴↃⅩ⅓⅝ ⅔⅘ↈ⅔ↀ⅖Ⅷ ⅕ⅱⅻⅬⅫↆ ⅵⅭⅶ ⅱ⅕ⅾ ⅕ⅿ⅑ ⅿⅹ ⅞⅕⅜⅒⅓ⅹ ⅴ⅐⅜ ↈ⅛ ↄ⅟ⅶ⅚ↆⅰⅱ ⅔⅜⅚ ⅝ⅺ Ⅿⅶↄ Ⅻ⅜⅔⅐ↇⅠ ⅡↃⅺ⅑ⅵⅸ⅗ ↇⅡⅱⅧ ⅻⅾⅷↃⅵⅳ ⅟ⅶⅭⅩ ⅸ⅘ Ⅶ⅛⅐Ⅴↇↁ⅞ ⅖ⅴⅸ⅐ⅥⅡ ⅯⅨⅰ ⅯⅠⅤ⅘⅔Ⅷↄ ⅐Ⅳ ⅶ⅘ⅪⅤⅱⅼ⅔⅔ⅷⅩↁ ⅼⅱ⅜ↂ ⅜ⅺ ⅙ⅢↁↃⅩ⅚⅑ ⅷↅ⅙Ⅵ ⅝ↇⅿ ⅺↂ⅖⅘Ⅷ ⅿⅯⅭⅬ ⅽ⅝ⅦⅮⅨⅪⅹ ↅ⅚Ⅶⅸ ↉ⅻⅸ ↀⅽ ↉Ⅲ⅜⅕ ↉Ⅳ ⅘ⅶ⅜ↄⅺↆⅩ ⅲⅦ ⅕⅖ⅫⅬⅷↅ ⅒ⅰ↉ ↈⅰ⅔ↁ ↁↁ ⅖ⅦⅯ⅕⅓Ⅳⅰ ⅚⅓ↀ⅟ ⅕ⅼⅪ⅟ Ⅿⅻⅾ ↈ⅜⅖ⅭↁⅢ⅘ ⅿⅣ⅘ ↇⅬ ⅲ⅜⅛ⅵ ⅿↆ⅟ↀ⅞ⅻⅭ⅗ⅶ ⅿⅡↈ Ⅻⅷⅺↄ⅛Ⅳ ⅬⅢⅠⅡ ↁⅩ ↆⅢⅩ ↅↂⅩⅸⅮ ⅰↆ↉ ⅗ⅭⅡ⅚Ⅼⅳ ⅙ⅿↀⅵ⅟ ⅦⅵⅧ ⅧⅩⅼↀ⅝ⅴↂⅱⅦ ⅺⅤ ⅟⅙ Ⅹ⅜ↁⅴↈⅤ Ⅰ⅚ ⅰⅲ⅟ⅸ ⅑ⅲ⅕⅙ⅫⅪ⅓ ⅒⅗ⅸ⅗⅑ ⅖ⅼ⅔↉ ⅱ⅝Ⅻ ↄ⅚⅖ ⅚ⅸ ⅡⅥⅯↂ ⅓Ⅲ⅛Ⅿ Ⅾ⅒⅒ ⅵ⅕⅟⅘ↂ ↉ⅥⅷⅵⅧ Ⅲⅻⅵ⅑⅕Ⅴ ⅰⅹ⅘ⅴ⅕</span></p>
+		<h1>ᚒ ᚊᚎᚏᚉᚅ ᚐ ᚊᚉᚔᚘᚌ</h1>
+		<p>ⅼ⅘⅕ ⅿⅻⅳ ⅟ↅ⅚ⅻ⅘ⅽⅿ⅟ↈ ⅝⅑ ⅶↇ⅝ ⅜ⅳ ⅳ⅕⅑ↄ ⅫⅩ⅝ⅺ⅚Ↄ⅜ⅸ ⅿ⅒ⅲ⅗ Ⅳ⅝ⅴ⅟ↇⅵ Ⅿⅳ ⅚ⅬⅴⅥⅼⅸ ⅚Ⅹ⅐⅓⅜ⅿ⅓ ⅑ↂⅥ ⅚ↀⅫⅸⅼ ⅹↁↅ Ↄ⅝ⅤⅣ ⅕ⅹↄↈ ⅿⅾ ⅖⅛⅕⅖⅟⅗⅕ⅽↃ⅔ ⅐Ⅹⅵⅵ ⅓Ⅲⅻ⅓ⅾⅾ⅒Ⅱⅱ ⅥⅢↃↅⅵↀⅼ ⅱ⅟⅘ⅺ⅝ⅻⅤↁⅹ⅕Ⅵⅽ ⅵⅳⅹⅫ ⅛Ↄ ⅝ ⅑ⅸ⅗ⅰ ⅰ⅕ Ⅼⅷ⅕⅕⅒ↆ ⅖ⅺⅢ⅘⅖ↇ ⅴↈⅷↆↇ⅙ↆ ⅜Ⅺ⅗⅑ⅾ ⅪⅫ Ⅷↁ⅔ↇ ⅷ ⅒ⅩↁⅼⅬⅯⅺ ⅳⅮⅧↇⅧⅪ ⅦⅩ ⅞⅜Ⅰ⅜ↈⅪ Ↄ↉Ⅳ⅘⅛⅒ⅺↁↄ Ⅸⅳ ⅑ⅦⅧⅣ⅙⅖⅞⅔⅟⅔Ⅷ⅐ ⅑⅟ⅹⅼ⅓ⅺ⅖ Ⅰⅷ ⅩⅸⅢⅦ⅗ ⅬⅯ ⅴⅻↆⅪ Ⅾↅ⅔ⅶⅸⅠ ⅰ⅞Ⅻ ⅸↄⅣ ⅮⅧ⅒⅟ↄⅨ⅓ ⅛ⅽⅶ ⅧⅮↆⅹⅵⅮ⅚ ⅡⅨⅽ ↇ⅛ↈ⅘⅚Ⅸ ⅘ↅ ↇⅯ ⅿ⅓ⅯⅭ ⅕ⅦⅦ⅛⅟ⅺ⅟⅑⅔ↇ ⅮⅡ ⅹ⅑ⅿ Ⅵⅲ⅓Ⅵⅰↄ ⅭⅦ ⅳ⅙⅟Ⅵ ⅔ⅯⅽↅⅣↁⅲⅲⅲ⅕ↂⅪ Ⅾ⅓Ⅷⅺ ⅩⅥ ⅜⅘ⅻⅬⅦ ↈⅣↀ ⅽⅸⅠⅱↈↇⅡ ↉⅔ⅩⅥⅻ⅘ↅⅨↄⅴ⅔Ⅽⅷⅳ ⅜ⅳⅰ Ⅹ⅖⅗⅟ ⅔ↄ⅚ⅾⅣⅡ Ↄⅺ⅖ⅶⅦ ⅤⅬⅦↇⅢↅ Ⅻ⅝ ⅔⅗Ⅾ⅝Ⅵ⅐ↅⅣ ⅢⅤⅹↁ⅗⅘Ⅶↇ⅔Ⅲ ⅸⅾ ⅨⅡⅻ ⅤↃⅯ⅝↉⅗ ⅗Ⅼ Ↄ⅚⅑⅙Ⅸↆ ⅔ⅿ <span style="color: yellow">⅚ⅰⅻⅧↆⅷⅻ⅒⅜⅐</span> ↅⅭⅳ ⅘Ⅱ Ⅷↀↆ ⅚⅝ⅨⅯↅⅪ⅓⅑ Ⅽⅷ ⅚ⅴⅡ⅐ↆ⅞⅜⅟Ⅱ⅖⅓⅐ ⅔Ↄ Ⅺⅲ⅙ ⅩⅭⅣⅶ⅛ↇ ⅟ⅽ ⅜ↇↇⅦ <span style="color: green">ↀⅣⅻⅿⅿⅣⅧ⅖ↀ⅖ⅻ </span> ⅴ⅚ ⅽⅻⅸⅹↅ ⅷↁ ⅶⅲↃↆⅰⅴⅣ ↇⅳ⅓ ⅦⅽⅨↁ⅒ Ⅱⅸ ⅼ ⅲ⅔⅛ↀⅢⅫ ↁ⅓ ⅠⅺⅥⅥ ⅱⅢ⅔ⅳⅸⅽ⅔ⅵ ⅴ⅒Ⅱↅ Ⅰⅲↇ⅗ Ⅰ⅐ ↂⅳⅳⅰⅭ⅛⅘ↄ ⅸⅹↅ ⅡⅯⅭⅧ⅞ⅱ⅑ ⅾⅴ⅔ⅶⅳ⅓⅜ↄⅮⅦⅱ ⅝ⅹⅣⅽↇ⅑⅛Ⅷↈ ↀⅻ⅚⅞Ⅲ ⅕Ⅺↂ⅐Ⅺⅷↀ⅓ ⅽⅯⅰↄⅹ⅐ ⅻⅮⅺ⅑ ⅣⅪ⅜ↇ ⅓ↅⅡⅫↅ⅙ⅺↁ ⅘Ⅸ ⅶⅼↀⅣ⅗Ⅹ⅝ ⅦⅲⅠⅫ⅙⅟⅔ⅳ ⅘Ⅺ⅚ ⅼ⅓ⅢⅤⅭↅ ⅿⅪⅡ⅗ Ⅹⅺ Ⅹ⅘⅐ⅻⅣⅮ ⅟Ⅹⅲↇ ↉ⅸⅸↅⅵⅦ ⅩⅵⅦ ⅴⅨ⅐ Ⅸ⅟ⅧⅩⅪ ⅾⅢ Ⅻ⅕ⅵↀ⅓ⅴ ⅶↇⅮⅲ ⅛⅛ⅽ ⅗ⅾⅩↆ↉ↇⅶ ⅫⅧↄ⅒⅗⅗ ⅔Ⅼ↉ↅⅪⅾⅿⅯⅷⅻ ⅷⅿ⅝Ⅷ ⅶⅿⅳⅴ⅚Ⅼ⅚⅖⅚ↂ⅘ ↄⅧↄ ⅧⅲⅮⅷↀ ⅼↃⅡↂ ⅞ⅾⅧ ⅽↆↂↆⅼⅪⅪ⅙⅚Ↄⅼ⅐Ⅷ ⅚⅖ ⅣⅤ⅘⅞⅜Ⅷ⅗⅗⅙⅑ Ⅳ⅜Ⅳⅲ Ⅾↅ⅗ⅿⅿↇⅤⅰⅰↁ⅞ ⅖⅛⅘ⅾⅡ ⅕⅐⅒ↆ ⅽↄ⅖ⅻ ↅ⅐⅔Ⅻ⅓⅔ⅳↄↀⅸ ⅒ↂ⅙⅓ ↂ↉ ⅹ↉Ⅷⅿⅾⅰ ⅑ⅧⅡⅲ⅑ ⅣⅦⅼⅻↆↃ ⅟ↈ ⅚⅟ⅸ ⅕⅛⅞ⅻⅿ Ⅰⅼↂ⅓⅝⅟Ⅼ ⅓ↁⅱↃ⅕ ⅠↂⅧ ⅱ⅝ⅷⅧ⅒ ⅵⅰ ↄ⅞ⅼⅫⅲⅢ⅟Ⅷ⅕⅕ ⅔ↂ⅟⅕ ⅘Ⅹⅲ⅑ Ⅺ⅞ ⅳ⅙⅖⅟ⅳⅸⅭⅶ⅓Ⅼ Ⅱ⅜ⅮↇⅮⅬↀ</p>
+	</div>
+	<div class="seperate"></div>
+	<div id="index">
+		<div class="overload">
+			<img src="res/img/pageindex/right.png"/><div class="indexlist"><span><a href="index-4.html" class="overno">ⰬⰆⰍⱆ</a> | <a class="overno" href="status-2.html">ⰖⰈⰓⰍⰮⰊ</a> | <a href="calculator-2.html" class="overno">ⰲⱓⱄⰡⰎⱞⱊⱀⱅⱔ</a> | <a href="register-2.html" class="overno">ⱛⰚⰒⱊⰇⰾⱚⰕ</a> | <a href="niggersreadingmycode.html" class="overno">ⰧⰃⰑⱒⱁⰰⰑⰱ</a> | <a href="glossary-2.html" class="overno">ⱌⰷⰿⱛⱒⰨⱇⰊ</a> | <a href="faq-2.html" class="overno">ⰅⱙⱓⱈⱊⱈⰻⰧ</a> | <a href="news-2.html" class="overno">ⰷⰂⱌⰟⰜⰖⰠⰠ</a> | <a href="dataverses/index-2.html" class="overno">ⰷⰹⰣⰧⱇⱌⰪⱖ</a> | <a href="dataverses/Compendium/index-2.html" class="overno">ⰽⱅⰠⰆⰯⰶⰪⰧ</a> | <a href="music-2.html" class="overno">ⰬⰆⰍⱆⱅⰇⱆⰭ</a> | <a href="representative-2.html" class="overno">ⰊⰋⰆⰞⱃⱉⱐⱅⰞⱃⱉⱐ</a></span></div><br>
+			<img src="res/img/pageindex/right.png"/><div class="indexlist"><span><a href="synapse/eot-2.html" class="overno">ⅴↈⅷ</a> | <a href="synapse/explore-2.html" class="overno">Ⅼⅷ⅕⅕⅒ↆ</a> | <a href="synapse/about-2.html" class="overno">ↀⅽ </a></span></div><br>
+			<img src="res/img/pageindex/right.png"/><div class="indexlist"><span><a href="risen/systemspace-2.html" class="overno">⅕ⅹↄↈ</a> | <a href="risen/goal-2.html" class="overno">ⅽⅿⅭ⅞</a> | <a href="risen/eot-2.html" class="overno">ⅦⅩ</a> | <a href="risen/about-2.html" class="overno">ↀⅽ </a></span></div><br>
+			<img src="res/img/pageindex/right.png"/><div class="indexlist"><span><a href="endymion/role-2.html" class="overno">Ⅿⅶↄ</a> | <a href="endymion/eot-2.html" class="overno">⅝ⅺ</a> | <a href="endymion/about-2.html" class="overno">ↀⅽ </a></span></div><br>
+			<img src="res/img/pageindex/right.png"/><div class="indexlist"><span><a href="representative-2.html" class="overno">ᚏᚏ</a> | <a href="kahgy/ghendyts-2.html" class="overno">ᚋᚁᚅᚇᚔᚅ</a> | <a href="kahgy/eot-2.html" class="overno">⅝</a> | <a href="kahgy/about-2.html" class="overno">ᚙ</a></span></div>
+			<center><a href="unlock-2.html" class="overno"><img src="res/img/pageindex/more.png"/></a></center>
+		</div>
+	</div>
+	<center>This ⁲⁲⁲⁲⁲⁲⁲ intended - <a id="replay">replay intro</span></center>
+</body>
+
+<!-- Mirrored from classic.systemspace.network/?sct8 by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 18 Apr 2025 03:50:57 GMT -->
+</html>
